@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Civil Servant Loan - O$APANIKA LOANS</title>
+    <link rel="icon" href="images/IMG-20250527-WA0001.jpg" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #072a5a;
+            --secondary: #34B3E4;
+            --accent: #A9A9A9;
+            --light: #F8F9FA;
+            --dark: #212529;
+            --gray: #6C757D;
+            --light-gray: #E9ECEF;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-color: var(--light);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        .top-bar {
+            background-color: var(--primary);
+            color: white;
+            padding: 8px 0;
+            font-size: 14px;
+        }
+        
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .contact-info {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            white-space: nowrap;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: var(--secondary);
+        }
+         
+        header {
+            background-color: white;
+            box-shadow: none;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        header.scrolled {
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        /* --- UPDATED HEADER CONTENT RULE --- */
+        .header-content {
+            display: flex;
+            justify-content: space-between; /* Pushes logo and menu/button to corners */
+            align-items: center;
+            padding: 10px 0;
+            width: 100%;
+        }
+        
+        .logo a { display: flex; align-items: center; }
+        
+        .logo img {
+            width: 150px;
+            height: auto;
+            max-width: 100%;
+        }
+
+        /* --- UPDATED NAV STYLES --- */
+        nav.desktop-menu ul {
+            display: flex;
+            list-style: none;
+            gap: clamp(15px, 2vw, 25px);
+        }
+        
+        nav.desktop-menu ul li a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s ease;
+            position: relative;
+            padding-bottom: 5px;
+        }
+        
+        nav.desktop-menu ul li a:hover, nav.desktop-menu ul li a.active {
+            color: var(--primary);
+        }
+        
+        nav.desktop-menu ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: width 0.3s ease;
+        }
+        
+        nav.desktop-menu ul li a:hover::after, nav.desktop-menu ul li a.active::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--primary);
+            cursor: pointer;
+        }
+
+        /* --- IMPROVED MOBILE MENU --- */
+        .mobile-menu {
+            display: none;
+            width: 100%;
+            background: white;
+            padding: 20px 0;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            position: absolute; /* Changed for overlay effect */
+            top: 100%;
+            left: 0;
+        }
+        
+        .mobile-menu.active {
+            display: block;
+        }
+        
+        .mobile-menu ul {
+            list-style: none;
+            text-align: center;
+        }
+        
+        .mobile-menu ul li {
+            margin-bottom: 15px;
+        }
+
+        .mobile-menu ul li:last-child {
+            margin-bottom: 0;
+        }
+        
+        .mobile-menu ul li a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            display: block;
+            padding: 10px;
+        }
+
+        .mobile-menu ul li a:hover {
+            color: var(--primary);
+            background-color: var(--light-gray);
+            border-radius: 5px;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(7, 42, 90, 0.8), rgba(7, 42, 90, 0.8)), url('https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: clamp(80px, 12vw, 120px) 0;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: clamp(28px, 5vw, 42px);
+            margin-bottom: 15px;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            list-style: none;
+            font-size: 14px;
+        }
+        
+        .breadcrumb li {
+            margin: 0 5px;
+        }
+        
+        .breadcrumb li:after {
+            content: '/';
+            margin-left: 10px;
+            color: var(--secondary);
+        }
+        
+        .breadcrumb li:last-child:after {
+            display: none;
+        }
+        
+        .breadcrumb a {
+            color: var(--secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .breadcrumb a:hover {
+            color: white;
+        }
+        
+        /* Loan Details Section */
+        .loan-details {
+            padding: clamp(40px, 8vw, 80px) 0;
+        }
+        
+        .loan-container {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 40px;
+        }
+        
+        .loan-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        .loan-text-content {
+            grid-column: 1;
+        }
+        
+        .loan-image-container {
+            grid-column: 2;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            height: fit-content;
+            position: relative;
+        }
+        
+        .loan-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+            min-height: 350px;
+        }
+        
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(7, 42, 90, 0.8), transparent);
+            padding: 20px;
+            color: white;
+        }
+        
+        .image-overlay h4 {
+            margin-bottom: 5px;
+            font-size: 18px;
+        }
+        
+        .image-overlay p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .loan-content h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+        
+        .loan-content p {
+            margin-bottom: 20px;
+            color: var(--gray);
+        }
+        
+        .features-list {
+            margin: 30px 0;
+        }
+        
+        .features-list li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .features-list i {
+            color: var(--secondary);
+            margin-right: 10px;
+            margin-top: 4px;
+        }
+        
+        .loan-highlights {
+            background-color: var(--light);
+            border-radius: 10px;
+            padding: 30px;
+            height: fit-content;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .loan-highlights h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 22px;
+            text-align: center;
+        }
+        
+        .highlight-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .highlight-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .highlight-item h4 {
+            color: var(--primary);
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+        
+        .highlight-item p {
+            color: var(--gray);
+            font-size: 14px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary);
+            color: white;
+            border: 2px solid var(--secondary);
+            width: 100%;
+        }
+        
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--secondary);
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            background-color: var(--light);
+            padding: clamp(40px, 8vw, 80px) 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: clamp(30px, 5vw, 50px);
+        }
+        
+        .section-title h2 {
+            font-size: clamp(28px, 5vw, 36px);
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            background-color: white;
+        }
+        
+        .faq-question {
+            padding: 15px 20px;
+            background-color: var(--primary);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-answer {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-answer-content {
+            padding: 20px;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+        
+        /* Benefits Section */
+        .benefits-section {
+            padding: clamp(40px, 8vw, 80px) 0;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .benefit-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border-top: 3px solid var(--secondary);
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .benefit-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .benefit-card p {
+            color: var(--gray);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: clamp(30px, 6vw, 60px) 0 0;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+            gap: clamp(30px, 4vw, 40px);
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: clamp(18px, 3vw, 20px);
+            margin-bottom: clamp(15px, 3vw, 25px);
+            color: white;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+        
+        .footer-column p {
+            color: #ADB5BD;
+            margin-bottom: 20px;
+            font-size: clamp(14px, 2vw, 16px);
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #ADB5BD;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            font-size: clamp(14px, 2vw, 15px);
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .footer-contact {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .footer-contact li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            color: #ADB5BD;
+            font-size: clamp(14px, 2vw, 15px);
+        }
+        
+        .footer-contact i {
+            color: var(--secondary);
+            margin-top: 4px;
+            min-width: 16px;
+        }
+        
+        .copyright {
+            background-color: rgba(0,0,0,0.2);
+            padding: 20px 15px;
+            text-align: center;
+            font-size: clamp(12px, 2vw, 14px);
+            color: #ADB5BD;
+        }
+        
+        /* --- RESPONSIVE MEDIA QUERIES --- */
+        @media (max-width: 992px) {
+            nav.desktop-menu { display: none; }
+            .mobile-menu-btn { display: block; }
+
+            .loan-container {
+                grid-template-columns: 1fr;
+            }
+            .loan-content {
+                grid-template-columns: 1fr;
+            }
+            .loan-image-container {
+                grid-column: 1;
+                max-width: 500px;
+                margin: 0 auto 30px;
+            }
+            .loan-highlights {
+                order: -1;
+                max-width: 500px;
+                margin: 0 auto 40px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .top-bar-content { justify-content: center; gap: 15px; }
+            .contact-info, .social-icons { justify-content: center; width: 100%; margin: 5px 0; }
+            .footer-content { grid-template-columns: 1fr; text-align: center; }
+            .footer-column h3::after { left: 50%; transform: translateX(-50%); }
+            .footer-links a:hover { transform: none; }
+        }
+    </style>
+</head>
+<body>
+
+    
+    
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/IMG-20250527-WA0001.jpg" alt="O$APANIKA LOANS Logo">
+                </a>
+            </div>
+            <!-- Desktop Navigation -->
+            <nav class="desktop-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                     <li><a href="about -us.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="loan calculator.html">Loan Calculator</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Menu"><i class="fas fa-bars"></i></button>
+            <!-- Mobile Menu -->
+            <div class="mobile-menu" id="mobileMenu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                     <li><a href="about -us.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="loan calculator.html">Loan Calculator</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Civil Servant Loan</h1>
+            <ul class="breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                
+                <li>Civil Servant Loan</li>
+            </ul>
+        </div>
+    </section>
+    
+    <!-- Loan Details Section -->
+    <section class="loan-details">
+        <div class="container loan-container">
+            <div class="loan-content">
+                <div class="loan-text-content">
+                    <h2>Financial Solutions for Public Service Professionals</h2>
+                    <p>Our Civil Servant Loan is specifically designed to meet the financial needs of government employees. We recognize your stable employment and dedicated public service by offering exclusive benefits, competitive rates, and flexible repayment options.</p>
+                    <p>Whether you're planning a major purchase, consolidating debt, or covering unexpected costs, our loan provides the reliable financial backing you need to achieve your goals.</p>
+                    
+                    <div class="features-list">
+                        <h3>Key Features:</h3>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> <strong>Competitive Rates:   </strong>&nbsp&nbspPreferential interest rates for government employees.</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Flexible Terms:</strong> Repayment periods that align with your budget.</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Higher Loan Amounts:</strong> Access larger sums based on your employment grade.</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Quick Approval:</strong> Streamlined process for fast access to funds.</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Simple Documentation:</strong> &nbspMinimal paperwork for a &nbsp&nbsphassle-free experience.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="loan-image-container">
+                    <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Professional civil servant in an office">
+                    <div class="image-overlay">
+                        <h4>Trusted Partner for Civil Servants</h4>
+                        <p>Reliable financial support you can count on.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="loan-highlights">
+                <h3>Loan Summary</h3>
+                <div class="highlight-item">
+                    <h4>Loan Amount</h4>
+                    <p>100,000 MWK - 5,000,000 MWK</p>
+                </div>
+                <div class="highlight-item">
+                    <h4>Loan Period</h4>
+                    <p>6 to 12 months</p>
+                </div>
+                <div class="highlight-item">
+                    <h4>Processing Time</h4>
+                    <p>Within 24 hours</p>
+                </div>
+                <div class="highlight-item">
+                    <h4>Requirements</h4>
+                    <p>Valid National ID & Employment Number</p>
+                </div>
+                <div class="highlight-item">
+                    <h4>Eligibility</h4>
+                    <p>Permanent or confirmed government employees</p>
+                </div>
+                <a href="https://forms.gle/f9ByDTM4SVmyzQS46" class="btn btn-primary">Apply Now</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question"><span>What makes a Civil Servant Loan different?</span><i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer"><div class="faq-answer-content"><p>It's a specialized loan for government employees that often comes with better terms, like lower interest rates and more flexible repayment plans, due to the perceived job security of the borrower.</p></div></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question"><span>Who is eligible to apply?</span><i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer"><div class="faq-answer-content"><p>Eligibility is typically for permanent or confirmed employees of federal, state, or local government bodies. Specific requirements may vary.</p></div></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question"><span>Can I use the loan for any purpose?</span><i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer"><div class="faq-answer-content"><p>Yes, these loans are generally multi-purpose. You can use the funds for personal expenses, home improvements, education, debt consolidation, or other needs.</p></div></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question"><span>How quickly can I get the loan?</span><i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer"><div class="faq-answer-content"><p>Our process is streamlined for civil servants. Once your application and minimal documents are submitted, you can expect approval and disbursement within 24 hours.</p></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Our Civil Servant Loan?</h2>
+                <p>We provide a loan service that values and rewards your public service.</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3>Preferential Rates</h3>
+                    <p>As a government employee, you benefit from some of our most competitive interest rates, reducing the overall cost of borrowing and making repayment more manageable.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>Flexibility and Trust</h3>
+                    <p>We offer flexible repayment terms that can be tailored to your salary cycle and financial situation. We trust in your stable employment and reward it with better terms.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>Simplicity and Speed</h3>
+                    <p>We’ve simplified the application process to require minimal documentation. Our priority is to get you the financial support you need quickly and without hassle.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-column">
+                <h3>About Us</h3>
+                <p>Osapanika Loan Bag is a leading microfinance institution in Malawi, providing accessible and affordable financial solutions.</p>
+                 
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about -us.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="loan calculator.html">Loan Calculator</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="payday-loan.html">Pay Day Loan</a></li>
+                    <li><a href="mlimi-loan.html">Mlimi Loan</a></li>
+                    <li><a href="iphushe-loan.html">Business iPhushidwe Loan</a></li>
+                    <li><a href="civil-servant-loan.html">Civil Servant Loan</a></li>
+                    <li><a href="group-loan.html">Group Loan</a></li>
+                    <li><a href="Emergency-Loan.html">Emergency Loan</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul class="footer-contact">
+                     <li><i class="fas fa-map-marker-alt"></i><span>Area 49, Tower Street, Lilongwe, Malawi</span></li>
+                    <li><i class="fas fa-phone"></i><span>+265 998 164 336<br>+265 881 426 054<br>+265 888 131 178
+                    <br>+265 897 537 221</span></li>
+                    <li><i class="fas fa-envelope"></i><span>osapanikaloans@gmail.com</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© <span id="current-year"></span> Osapanika Loan Bag. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Automatic Copyright Year
+            const yearSpan = document.getElementById('current-year');
+            if (yearSpan) {
+                yearSpan.textContent = new Date().getFullYear();
+            }
+
+            // Header scroll effect
+            const header = document.querySelector('header');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // Mobile Menu Toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            if(mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('active');
+                    const icon = this.querySelector('i');
+                    icon.classList.toggle('fa-bars');
+                    icon.classList.toggle('fa-times');
+                });
+            }
+            
+            // FAQ Accordion
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const faqItem = question.parentElement;
+                    const wasActive = faqItem.classList.contains('active');
+                    
+                    // Optional: Close all other active items
+                    document.querySelectorAll('.faq-item.active').forEach(item => {
+                        item.classList.remove('active');
+                        item.querySelector('.faq-question i').className = 'fas fa-chevron-down';
+                    });
+
+                    // Toggle the clicked item
+                    if (!wasActive) {
+                        faqItem.classList.add('active');
+                        const icon = question.querySelector('i');
+                        icon.className = 'fas fa-chevron-up';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

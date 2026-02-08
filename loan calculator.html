@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pay Day Loan Calculator - O$APANIKA LOANS</title>
+    <link rel="icon" href="images/IMG-20250527-WA0001.jpg" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #072a5a;
+            --secondary: #34B3E4;
+            --danger: #dc3545; /* Added for error states */
+            --accent: #A9A9A9;
+            --light: #F8F9FA;
+            --dark: #212529;
+            --gray: #6C757D;
+            --light-gray: #E9ECEF;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-color: var(--light);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: none;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        header.scrolled {
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            width: 100%;
+        }
+        
+        .logo a {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            width: 150px;
+            height: auto;
+            max-width: 100%;
+        }
+
+        nav.desktop-menu ul {
+            display: flex;
+            list-style: none;
+            gap: clamp(15px, 2vw, 25px);
+        }
+        
+        nav.desktop-menu ul li a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s ease;
+            position: relative;
+            padding-bottom: 5px;
+        }
+        
+        nav.desktop-menu ul li a:hover,
+        nav.desktop-menu ul li a.active {
+            color: var(--primary);
+        }
+        
+        nav.desktop-menu ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: width 0.3s ease;
+        }
+        
+        nav.desktop-menu ul li a:hover::after,
+        nav.desktop-menu ul li a.active::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        
+        .mobile-menu {
+            display: none;
+            width: 100%;
+            background: white;
+            padding: 20px 0;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 999;
+        }
+        
+        .mobile-menu.active {
+            display: block;
+        }
+        
+        .mobile-menu ul { list-style: none; text-align: center; }
+        .mobile-menu ul li { margin-bottom: 15px; }
+        .mobile-menu ul li:last-child { margin-bottom: 0; }
+        
+        .mobile-menu ul li a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            display: block;
+            padding: 10px;
+        }
+        .mobile-menu ul li a:hover,
+        .mobile-menu ul li a.active {
+            color: var(--primary);
+            background-color: var(--light-gray);
+            border-radius: 5px;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(7, 42, 90, 0.8), rgba(7, 42, 90, 0.8)), url('images/calculator-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: clamp(60px, 10vw, 100px) 0;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: clamp(28px, 5vw, 42px);
+            margin-bottom: 15px;
+        }
+        
+        .calculator-image {
+            display: block;
+            max-width: 150px;
+            width: 50%;
+            margin: 0 auto 25px;
+        }
+        
+        .breadcrumb { display: flex; justify-content: center; list-style: none; font-size: 16px; }
+        .breadcrumb li { margin: 0 5px; color: white; }
+        .breadcrumb li a { color: var(--secondary); text-decoration: none; transition: color 0.3s ease; }
+        .breadcrumb li a:hover { color: white; }
+        .breadcrumb li:after { content: '/'; margin-left: 10px; color: var(--light-gray); opacity: 0.7; }
+        .breadcrumb li:last-child:after { display: none; }
+        
+        /* Calculator Section */
+        .calculator-section { padding: clamp(40px, 8vw, 80px) 0; }
+        
+        .calculator-container {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+        
+        .calculator-form {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .calculator-form h2 {
+            color: var(--primary);
+            margin-bottom: 25px;
+            font-size: 28px;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--dark);
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--light-gray);
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background-color: var(--light);
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(52, 179, 228, 0.2);
+            background-color: white;
+        }
+
+        .form-group input.is-invalid {
+            border-color: var(--danger);
+        }
+        .form-group input.is-invalid:focus {
+             border-color: var(--danger);
+             box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.25);
+        }
+        .invalid-feedback {
+            display: none;
+            width: 100%;
+            margin-top: 5px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--danger);
+        }
+        .form-group input.is-invalid + .invalid-feedback {
+            display: block;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            text-align: center;
+            margin-top: 10px;
+            cursor: pointer;
+            border: 2px solid var(--secondary);
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary);
+            color: white;
+            width: 100%;
+        }
+        
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--secondary);
+        }
+        
+        .calculator-results {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: var(--light);
+            border-radius: 8px;
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .calculator-results p { margin-bottom: 12px; display: flex; justify-content: space-between; font-size: 16px; }
+        .calculator-results span { font-weight: 600; color: var(--primary); }
+        .calculator-results .total { font-size: 20px; font-weight: 700; color: var(--secondary); border-top: 2px solid var(--light-gray); padding-top: 12px; margin-top: 12px; }
+        
+        .calculator-info {
+            background-color: var(--light);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .calculator-info h3 { color: var(--primary); margin-bottom: 20px; font-size: 22px; text-align: center; }
+        .calculator-info p { text-align: center; margin-bottom: 20px; color: var(--gray); }
+        .calculator-info ul { list-style: none; padding-left: 0; margin-bottom: 20px; }
+        .calculator-info li { margin-bottom: 10px; color: var(--gray); display: flex; justify-content: space-between; background-color: white; padding: 10px; border-radius: 5px; }
+        .calculator-info li strong { color: var(--dark); }
+        
+        .example-box { background-color: white; border-left: 4px solid var(--secondary); padding: 15px; margin-top: 20px; border-radius: 0 5px 5px 0; }
+        .example-box p { margin: 0; font-style: italic; color: var(--dark); }
+        
+        /* FAQ Section */
+        .faq-section { padding: clamp(40px, 8vw, 80px) 0; background-color: white; }
+        .section-title { text-align: center; margin-bottom: clamp(30px, 5vw, 50px); }
+        .section-title h2 { font-size: clamp(28px, 5vw, 36px); color: var(--primary); margin-bottom: 15px; font-weight: 700; }
+        .faq-container { max-width: 800px; margin: 0 auto; }
+        .faq-item { margin-bottom: 15px; border-radius: 8px; overflow: hidden; box-shadow: 0 3px 10px rgba(0,0,0,0.05); background-color: white; border: 1px solid var(--light-gray); }
+        .faq-question { padding: 15px 20px; background-color: var(--primary); color: white; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .faq-answer { padding: 0; max-height: 0; overflow: hidden; transition: all 0.3s ease; }
+        .faq-answer-content { padding: 20px; color: var(--gray); }
+        .faq-item.active .faq-answer { max-height: 500px; }
+        .faq-item.active .faq-question { background-color: var(--primary); color: white; }
+
+        /* Footer */
+        footer { background-color: var(--dark); color: white; padding: clamp(30px, 6vw, 60px) 0 0; }
+        .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: clamp(30px, 4vw, 40px); margin-bottom: 40px; }
+        .footer-column h3 { font-size: clamp(18px, 3vw, 20px); margin-bottom: clamp(15px, 3vw, 25px); color: white; position: relative; padding-bottom: 10px; }
+        .footer-column h3:after { content: ''; position: absolute; left: 0; bottom: 0; width: 50px; height: 2px; background-color: var(--secondary); }
+        .footer-column p { color: #ADB5BD; margin-bottom: 20px; font-size: clamp(14px, 2vw, 16px); }
+        .footer-links { list-style: none; padding-left: 0; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: #ADB5BD; text-decoration: none; transition: all 0.3s ease; display: inline-block; font-size: clamp(14px, 2vw, 15px); }
+        .footer-links a:hover { color: white; transform: translateX(5px); }
+        .footer-contact { list-style: none; padding-left: 0; }
+        .footer-contact li { margin-bottom: 15px; display: flex; align-items: flex-start; gap: 10px; color: #ADB5BD; font-size: clamp(14px, 2vw, 15px); }
+        .footer-contact i { color: var(--secondary); margin-top: 4px; min-width: 16px; }
+        .copyright { background-color: rgba(0,0,0,0.2); padding: 20px 15px; text-align: center; font-size: clamp(12px, 2vw, 14px); color: #ADB5BD; }
+        
+        /* --- NEW: SCROLL ANIMATION SYSTEM --- */
+        .animate-on-scroll {
+            opacity: 0;
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .animate-on-scroll.slide-from-top {
+            transform: translateY(-30px);
+        }
+        .animate-on-scroll.slide-from-bottom {
+            transform: translateY(30px);
+        }
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Staggered delay helpers */
+        .delay-1 { transition-delay: 0.2s; }
+        .delay-2 { transition-delay: 0.4s; }
+        /* --- END OF NEW STYLES --- */
+
+        /* Responsive Breakpoints */
+        @media (max-width: 992px) {
+            nav.desktop-menu { display: none; }
+            .mobile-menu-btn { display: block; }
+            .calculator-container { grid-template-columns: 1fr; }
+            .calculator-info { order: -1; margin-bottom: 40px; }
+        }
+        
+        @media (max-width: 768px) {
+            .footer-content { grid-template-columns: 1fr; text-align: center; }
+            .footer-column h3::after { left: 50%; transform: translateX(-50%); }
+            .footer-links a:hover { transform: none; }
+        }
+    </style>
+</head>
+<body>
+    
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/IMG-20250527-WA0001.jpg" alt="O$APANIKA LOANS Logo">
+                </a>
+            </div>
+            
+            <nav class="desktop-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about -us.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="loan calculator.html" class="active">Loan Calculator</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="mobile-menu" id="mobileMenu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about -us.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="loan calculator.html" class="active">Loan Calculator</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <!-- MODIFIED: Added animation classes -->
+                <img src="images/calculator.jpg" alt="Loan Calculator Icon" class="calculator-image animate-on-scroll slide-from-top">
+                <h1 class="animate-on-scroll slide-from-top delay-1">Pay Day Loan Calculator</h1>
+                <ul class="breadcrumb animate-on-scroll slide-from-top delay-2">
+                     
+                </ul>
+            </div>
+        </section>
+        
+        <section class="calculator-section">
+            <div class="container calculator-container">
+                <!-- MODIFIED: Changed class from .slide-in -->
+                <div class="calculator-form animate-on-scroll slide-from-bottom">
+                    <h2>Calculate Your Pay Day Loan</h2>
+                    <form id="loan-form" novalidate>
+                        <div class="form-group">
+                            <label for="loan-amount">Loan Amount (MWK)</label>
+                            <input type="number" id="loan-amount" placeholder="Enter amount" required>
+                            <div class="invalid-feedback" id="amount-error"></div>
+                        </div>
+                                                
+                        <div class="form-group">
+                            <label for="loan-period">Repayment Period</label>
+                            <select id="loan-period" required>
+                                <!-- Options are populated by JavaScript -->
+                            </select>
+                        </div>
+                        
+                        <button type="button" id="calculate-btn" class="btn btn-primary">Calculate Repayment</button>
+                    </form>
+                    
+                    <div class="calculator-results" id="calculator-results">
+                        <!-- Results will be displayed here by JavaScript -->
+                    </div>
+                </div>
+                
+                <!-- MODIFIED: Changed class from .slide-in -->
+                <aside class="calculator-info animate-on-scroll slide-from-bottom">
+                    <h3>Pay Day Loan Rates</h3>
+                    <p>Our rates are based on the repayment period you choose.</p>
+                    
+                    <ul>
+                        <li><strong>1 to 7 Days:</strong><span>15%</span></li>
+                        <li><strong>8 to 14 Days:</strong><span>25%</span></li>
+                        <li><strong>15 to 30 Days:</strong><span>40%</span></li>
+                    </ul>
+                    
+                    <div class="example-box">
+                        <p><strong>Disclaimer:</strong> This calculator provides an estimate for informational purposes only. Final loan terms are subject to approval.</p>
+                    </div>
+                </aside>
+            </div>
+        </section>
+        
+        <section class="faq-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2 class="animate-on-scroll slide-from-bottom">Frequently Asked Questions</h2>
+                </div>
+                <div class="faq-container">
+                    <!-- MODIFIED: Changed class from .slide-in -->
+                    <div class="faq-item animate-on-scroll slide-from-bottom">
+                        <div class="faq-question">
+                            <span>How accurate is the loan calculator?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>Our loan calculator provides accurate estimates based on our current standard interest rates. The actual loan terms may vary slightly based on your specific circumstances and our final approval process.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item animate-on-scroll slide-from-bottom">
+                        <div class="faq-question">
+                            <span>Does the calculator include all fees?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>Yes, the calculator includes all applicable interest in the total repayment amount. There are no hidden charges - the amount shown is the total you'll need to repay.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item animate-on-scroll slide-from-bottom">
+                        <div class="faq-question">
+                            <span>How do I apply after using the calculator?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>After calculating your loan, you can visit our <a href="services.html">Services</a> page to learn more and then <a href="contact.html">Contact Us</a> to begin the application process. Our team is ready to help!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container footer-content">
+            <!-- MODIFIED: Changed class from .slide-in -->
+            <div class="footer-column animate-on-scroll slide-from-bottom">
+                <h3>About Us</h3>
+                <p>Osapanika Loan Bag is a leading microfinance institution in Malawi, providing accessible and affordable financial solutions.</p>
+            </div>
+            <div class="footer-column animate-on-scroll slide-from-bottom">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about -us.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="loan calculator.html" class="active">Loan Calculator</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column animate-on-scroll slide-from-bottom">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="payday-loan.html">Pay Day Loan</a></li>
+                    <li><a href="mlimi-loan.html">Mlimi Loan</a></li>
+                    <li><a href="iphushe-loan.html">Business iPhushidwe Loan</a></li>
+                    <li><a href="civil-servant-loan.html">Civil Servant Loan</a></li>
+                    <li><a href="group-loan.html">Group Loan</a></li>
+                    <li><a href="emergency-loan.html">Emergency Loan</a></li>
+                </ul>
+            </div>
+            <div class="footer-column animate-on-scroll slide-from-bottom">
+                <h3>Contact Us</h3>
+                <ul class="footer-contact">
+                <li><i class="fas fa-map-marker-alt"></i><span>Area 49, Tower Street, Lilongwe, Malawi</span></li>
+                    <li><i class="fas fa-phone"></i><span>+265 998 164 336<br>+265 881 426 054<br>+265 888 131 178
+                    <br>+265 897 537 221</span></li>
+                   <li><i class="fas fa-envelope"></i><span>osapanikaloans@gmail.com</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© <span id="current-year"></span> Osapanika Loan Bag. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Automatic Copyright Year
+            const yearSpan = document.getElementById('current-year');
+            if (yearSpan) {
+                yearSpan.textContent = new Date().getFullYear();
+            }
+
+            // Header scroll effect
+            const header = document.querySelector('header');
+            if(header) {
+                window.addEventListener('scroll', function() {
+                    if (window.scrollY > 50) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                });
+            }
+
+            // Mobile Menu Toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('active');
+                    const icon = this.querySelector('i');
+                    icon.classList.toggle('fa-bars');
+                    icon.classList.toggle('fa-times');
+                });
+            }
+            
+            // FAQ Accordion
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const faqItem = question.parentElement;
+                    const icon = question.querySelector('i');
+                    const wasActive = faqItem.classList.contains('active');
+
+                    if (!wasActive) {
+                        faqItem.classList.add('active');
+                        icon.className = 'fas fa-chevron-up';
+                    } else {
+                        faqItem.classList.remove('active');
+                        icon.className = 'fas fa-chevron-down';
+                    }
+                });
+            });
+        
+            // Loan Calculator Logic
+            const loanForm = document.getElementById('loan-form');
+            if(loanForm) {
+                const loanPeriodSelect = document.getElementById('loan-period');
+                const calculateBtn = document.getElementById('calculate-btn');
+                const loanAmountInput = document.getElementById('loan-amount');
+                const resultsDiv = document.getElementById('calculator-results');
+                const amountError = document.getElementById('amount-error'); 
+
+                const payDayLoanData = {
+                    '1 to 7 Days': 0.15,
+                    '8 to 14 Days': 0.25,
+                    '15 to 30 Days': 0.40
+                };
+
+                function populateLoanPeriods() {
+                    loanPeriodSelect.innerHTML = '';
+                    for (const period in payDayLoanData) {
+                        const option = document.createElement('option');
+                        option.value = payDayLoanData[period];
+                        option.textContent = period;
+                        loanPeriodSelect.appendChild(option);
+                    }
+                }
+                
+                function calculateLoan() {
+                    loanAmountInput.classList.remove('is-invalid');
+                    amountError.textContent = '';
+                    resultsDiv.style.display = 'none';
+                    const amount = parseFloat(loanAmountInput.value);
+                    if (isNaN(amount) || amount <= 0) {
+                        loanAmountInput.classList.add('is-invalid');
+                        amountError.textContent = 'Please enter a valid, positive loan amount.';
+                        loanAmountInput.focus();
+                        return;
+                    }
+                    
+                    const interestRate = parseFloat(loanPeriodSelect.value);
+                    const periodText = loanPeriodSelect.options[loanPeriodSelect.selectedIndex].text;
+                    const interestAmount = amount * interestRate;
+                    const totalRepayment = amount + interestAmount;
+                    const formatCurrency = (num) => `MK ${num.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+
+                    resultsDiv.innerHTML = `
+                        <p>Loan Type: <span>Pay Day Loan</span></p>
+                        <p>Loan Amount: <span>${formatCurrency(amount)}</span></p>
+                        <p>Repayment Period: <span>${periodText}</span></p>
+                        <p>Interest Rate: <span>${(interestRate * 100).toFixed(0)}%</span></p>
+                        <p>Interest Payable: <span>${formatCurrency(interestAmount)}</span></p>
+                        <p class="total">Total Repayment: <span>${formatCurrency(totalRepayment)}</span></p>
+                    `;
+                    resultsDiv.style.display = 'block';
+                }
+
+                calculateBtn.addEventListener('click', calculateLoan);
+
+                loanAmountInput.addEventListener('input', () => {
+                    if (loanAmountInput.classList.contains('is-invalid')) {
+                        loanAmountInput.classList.remove('is-invalid');
+                        amountError.textContent = '';
+                    }
+                });
+                populateLoanPeriods();
+            }
+
+            // --- MODIFIED: SCROLL ANIMATION LOGIC ---
+            const animatedElements = document.querySelectorAll('.animate-on-scroll');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1, 
+            });
+
+            animatedElements.forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>

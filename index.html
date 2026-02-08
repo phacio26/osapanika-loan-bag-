@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O$APANIKA LOANS - YOUR FINANCIAL BUTTON 24/7</title>
+    <link rel="icon" href="images/IMG-20250527-WA0001.jpg" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #072a5a;
+            --secondary: #34B3E4;
+            --accent: #A9A9A9;
+            --light: #F8F9FA;
+            --dark: #212529;
+            --gray: #6C757D;
+            --light-gray: #E9ECEF;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-color: var(--light);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        .top-bar {
+            background-color: var(--primary);
+            color: white;
+            padding: 8px 0;
+            font-size: 14px;
+        }
+        
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .contact-info {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            white-space: nowrap;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: var(--secondary);
+        }
+         
+        header {
+            background-color: white;
+            box-shadow: none;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        header.scrolled {
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            width: 100%;
+        }
+        
+        .logo a {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            width: 150px;
+            height: auto;
+            max-width: 100%;
+        }
+
+        nav.desktop-menu ul {
+            display: flex;
+            list-style: none;
+            gap: clamp(15px, 2vw, 25px);
+        }
+        
+        nav.desktop-menu ul li a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s ease;
+            position: relative;
+            padding-bottom: 5px;
+        }
+        
+        nav.desktop-menu ul li a:hover, nav.desktop-menu ul li a.active {
+            color: var(--primary);
+        }
+        
+        nav.desktop-menu ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: width 0.3s ease;
+        }
+        
+        nav.desktop-menu ul li a:hover::after, nav.desktop-menu ul li a.active::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        
+        .mobile-menu {
+            display: none;
+            width: 100%;
+            background: white;
+            padding: 20px 0;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 999;
+        }
+        
+        .mobile-menu.active {
+            display: block;
+        }
+        
+        .mobile-menu ul {
+            list-style: none;
+            text-align: center;
+        }
+        
+        .mobile-menu ul li {
+            margin-bottom: 15px;
+        }
+        .mobile-menu ul li:last-child {
+            margin-bottom: 0;
+        }
+        
+        .mobile-menu ul li a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            display: block;
+            padding: 10px;
+        }
+        .mobile-menu ul li a:hover, .mobile-menu ul li a.active {
+            color: var(--primary);
+            background-color: var(--light-gray);
+            border-radius: 5px;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            overflow: hidden;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slideshow-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out, transform 8s linear;
+            transform: scale(1.1); /* Ken Burns effect start */
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: scale(1); /* Ken Burns effect end */
+        }
+
+        .slide::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(7, 42, 90, 0.6), rgba(7, 42, 90, 0.6)); 
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1, .welcome-text, .hero .intro-p, .hero .btn-container {
+            will-change: transform, opacity;
+            animation: hero-fade-in 0.8s ease-out forwards;
+            opacity: 0;
+        }
+        
+        .welcome-text { animation-delay: 0.2s; }
+        .hero .intro-p { animation-delay: 0.4s; }
+        .hero .btn-container { animation-delay: 0.6s; }
+
+        @keyframes hero-fade-in {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(36px, 6vw, 52px);
+            font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .welcome-text {
+            font-size: clamp(18px, 3vw, 22px);
+            font-weight: 500;
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+        
+        .intro-p {
+            font-size: clamp(16px, 2.5vw, 18px);
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn-container {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary);
+            color: white;
+            border: 2px solid var(--secondary);
+        }
+        
+        .btn-primary:hover {
+            background-color: transparent;
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* Scroll Animation Styles */
+        .scroll-animate { 
+            opacity: 0; 
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out; 
+            will-change: opacity, transform; 
+        }
+        .scroll-animate.from-bottom { transform: translateY(50px); }
+        .scroll-animate.is-visible { 
+            opacity: 1; 
+            transform: translate(0, 0); 
+        }
+        
+        /* Features Section */
+        .features {
+            padding: clamp(40px, 8vw, 80px) 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: clamp(28px, 5vw, 36px);
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            font-size: clamp(16px, 2.5vw, 18px);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 25px;
+            border-radius: 50%;
+            background-color: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--light-gray);
+        }
+
+        .feature-icon i {
+            font-size: 36px;
+            color: var(--secondary);
+        }
+        
+        .feature-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .feature-card p {
+            font-size: 16px;
+            color: var(--gray);
+        }
+        
+        /* Loan Products Section */
+        .loan-products {
+            padding: clamp(40px, 8vw, 80px) 0;
+            background-color: var(--light);
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .product-img {
+            height: 200px;
+            background-color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            color: var(--secondary);
+        }
+        
+        .product-content {
+            padding: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-content h3 {
+            font-size: 22px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .product-content p {
+            color: var(--gray);
+            margin-bottom: 20px;
+            font-size: 16px;
+            flex-grow: 1;
+        }
+        
+        .product-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--secondary);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            margin-top: auto;
+        }
+        
+        .product-link i {
+            margin-left: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .product-link:hover {
+            color: var(--primary);
+        }
+        
+        .product-link:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: clamp(40px, 8vw, 80px) 0;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: clamp(28px, 5vw, 36px);
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            font-size: clamp(16px, 2.5vw, 18px);
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: clamp(30px, 6vw, 60px) 0 0;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+            gap: clamp(30px, 4vw, 40px);
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: clamp(18px, 3vw, 20px);
+            margin-bottom: clamp(15px, 3vw, 25px);
+            color: white;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+        
+        .footer-column p {
+            color: #ADB5BD;
+            margin-bottom: 20px;
+            font-size: clamp(14px, 2vw, 16px);
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #ADB5BD;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            font-size: clamp(14px, 2vw, 15px);
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .footer-contact {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .footer-contact li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            color: #ADB5BD;
+            font-size: clamp(14px, 2vw, 15px);
+        }
+        
+        .footer-contact i {
+            color: var(--secondary);
+            margin-top: 4px;
+            min-width: 16px;
+        }
+        
+        .copyright {
+            background-color: rgba(0,0,0,0.2);
+            padding: 20px 15px;
+            text-align: center;
+            font-size: clamp(12px, 2vw, 14px);
+            color: #ADB5BD;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 992px) {
+            nav.desktop-menu { display: none; }
+            .mobile-menu-btn { display: block; }
+        }
+        
+        @media (max-width: 768px) {
+            .top-bar-content { justify-content: center; gap: 15px; }
+            .contact-info, .social-icons { justify-content: center; width: 100%; margin: 5px 0; }
+            .btn-container { flex-direction: column; align-items: center; }
+            .footer-content { grid-template-columns: 1fr; text-align: center; }
+            .footer-column h3::after { left: 50%; transform: translateX(-50%); }
+            .footer-links a:hover { transform: none; }
+        }
+    </style>
+</head>
+<body>
+
+    
+    
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/IMG-20250527-WA0001.jpg" alt="O$APANIKA LOANS Logo">
+                </a>
+            </div>
+            
+            <nav class="desktop-menu">
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about -us.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="loan calculator.html">Loan Calculator</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="mobile-menu" id="mobileMenu">
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                     <li><a href="about -us.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="loan calculator.html">Loan Calculator</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <!-- Hero Section with Slideshow -->
+        <section class="hero">
+            <div class="slideshow-container">
+               <div class="slide active" style="background-image: url('images/istockphoto-1387138238-612x612.jpg');"></div>
+               <div class="slide" style="background-image: url('images/WhatsApp Image 2025-06-13 at 19.51.43_9bb35afe.jpg');"></div>
+               <div class="slide" style="background-image: url('images/WhatsApp Image 2025-06-13 at 19.51.45_457006dd.jpg');"></div>
+            </div>
+
+            <div class="container hero-content">
+                <h1>Welcome to O$apanika Loans</h1>
+                <p class="welcome-text">Your Financial Button, 24/7</p> 
+                <p class="intro-p">At Osapanika Loan Bag, we empower individuals and businesses with accessible and affordable financial services tailored to your needs.</p>
+                <div class="btn-container">
+                    <a href="services.html" class="btn btn-primary">Our Services</a>
+                    <a href="about -us.html" class="btn btn-outline">Learn More</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Features Section -->
+        <section class="features">
+            <div class="container">
+                <div class="section-title scroll-animate from-bottom">
+                    <h2>Why Choose Osapanika Loan Bag?</h2>
+                    <p>We're committed to providing exceptional financial services that make a real difference in people's lives.</p>
+                </div>
+                
+                <div class="features-grid stagger-grid">
+                    <div class="feature-card scroll-animate from-bottom">
+                        <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                        <h3>Fast Approval</h3>
+                        <p>Our streamlined process gets you approved quickly so you can access funds when you need them most.</p>
+                    </div>
+                    
+                    <div class="feature-card scroll-animate from-bottom">
+                        <div class="feature-icon"><i class="fas fa-hand-holding-usd"></i></div>
+                        <h3>Competitive Rates</h3>
+                        <p>We offer some of the most competitive and fair interest rates in the Malawian microfinance market.</p>
+                    </div>
+                    
+                    <div class="feature-card scroll-animate from-bottom">
+                        <div class="feature-icon"><i class="fas fa-calendar-check"></i></div>
+                        <h3>Flexible Terms</h3>
+                        <p>We provide customized repayment plans that work with your cash flow and financial situation.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Loan Products Section -->
+        <section class="loan-products">
+            <div class="container">
+                <div class="section-title scroll-animate from-bottom">
+                    <h2>Our Loan Products</h2>
+                    <p>Designed to meet your unique financial needs, from covering daily expenses to funding large-scale projects.</p>
+                </div>
+                
+                <div class="products-grid stagger-grid">
+                    <div class="product-card scroll-animate from-bottom">
+                        <div class="product-img"><i class="fas fa-money-bill-wave"></i></div>
+                        <div class="product-content">
+                            <h3>Pay Day Loan</h3>
+                            <p>Get paid early and meet your financial obligations with our convenient payday loan solution.</p>
+                            <a href="payday-loan.html" class="product-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card scroll-animate from-bottom">
+                        <div class="product-img"><i class="fas fa-tractor"></i></div>
+                        <div class="product-content">
+                            <h3>Mlimi Loan</h3>
+                            <p>Support your agricultural endeavors and increase your yields with our specialized farming loan.</p>
+                            <a href="mlimi-loan.html" class="product-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card scroll-animate from-bottom">
+                        <div class="product-img"><i class="fas fa-briefcase"></i></div>
+                        <div class="product-content">
+                            <h3>Business iPhushidwe Loan</h3>
+                            <p>Boost your business growth and expansion with our tailored business financing solutions.</p>
+                            <a href="iphushe-loan.html" class="product-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card scroll-animate from-bottom">
+                        <div class="product-img"><i class="fas fa-user-tie"></i></div>
+                        <div class="product-content">
+                            <h3>Civil Servant Loan</h3>
+                            <p>Specialized financing designed specifically for government employees with flexible terms.</p>
+                            <a href="civil-servant-loan.html" class="product-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card scroll-animate from-bottom">
+                        <div class="product-img"><i class="fas fa-users"></i></div>
+                        <div class="product-content">
+                            <h3>Group Loan</h3>
+                            <p>Collaborative lending for groups with shared financial goals and responsibilities.</p>
+                            <a href="group-loan.html" class="product-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card scroll-animate from-bottom">
+                        <div class="product-img"><i class="fas fa-first-aid"></i></div>
+                        <div class="product-content">
+                            <h3>Emergency Loan</h3>
+                            <p>Quick access to funds in times of unexpected need with our rapid approval process.</p>
+                            <a href="Emergency-Loan.html" class="product-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CTA Section -->
+        <section class="cta">
+            <div class="container">
+                <h2>Ready to Achieve Your Financial Goals?</h2>
+                <p>Our team is ready to support you with the right financial solution for your needs.</p>
+                <div class="btn-container">
+                    <a href="https://forms.gle/f9ByDTM4SVmyzQS46" class="btn btn-primary">Apply for Loan Now</a>
+                    <a href="contact.html" class="btn btn-outline">Contact Us</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-column">
+                <h3>About Us</h3>
+                <p>Osapanika Loan Bag is a leading microfinance institution in Malawi, providing accessible and affordable financial solutions.</p>
+                 
+            </div>
+            
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                   <li><a href="about -us.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="loan calculator.html">Loan Calculator</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="payday-loan.html">Pay Day Loan</a></li>
+                    <li><a href="mlimi-loan.html">Mlimi Loan</a></li>
+                    <li><a href="iphushe-loan.html">Business iPhushidwe Loan</a></li>
+                    <li><a href="civil-servant-loan.html">Civil Servant Loan</a></li>
+                    <li><a href="group-loan.html">Group Loan</a></li>
+                    <li><a href="Emergency-Loan.html">Emergency Loan</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul class="footer-contact">
+                    <li><i class="fas fa-map-marker-alt"></i><span>Area 49, Tower Street, Lilongwe, Malawi</span></li>
+                    <li><i class="fas fa-phone"></i><span>+265 998 164 336<br>+265 881 426 054<br>+265 888 131 178
+                    <br>+265 897 537 221</span></li>
+                    <li><i class="fas fa-envelope"></i><span>osapanikaloans@gmail.com</span></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>© <span id="current-year"></span> Osapanika Loan Bag. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Automatic Copyright Year
+            const yearSpan = document.getElementById('current-year');
+            if (yearSpan) {
+                yearSpan.textContent = new Date().getFullYear();
+            }
+
+            // Header scroll effect
+            const header = document.querySelector('header');
+            if(header) {
+                window.addEventListener('scroll', function() {
+                    if (window.scrollY > 50) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                });
+            }
+
+            // Hero Slideshow
+            const slideshow = document.querySelector('.slideshow-container');
+            if(slideshow) {
+                let slideIndex = 0;
+                showSlides();
+
+                function showSlides() {
+                    const slides = document.querySelectorAll(".slide");
+                    if (slides.length === 0) return;
+                    
+                    for (let i = 0; i < slides.length; i++) {
+                        slides[i].classList.remove("active");
+                    }
+                    slideIndex++;
+                    if (slideIndex > slides.length) { slideIndex = 1; }    
+                    slides[slideIndex - 1].classList.add("active");
+                    setTimeout(showSlides, 5000); // Change image every 5 seconds
+                }
+            }
+
+            // Mobile Menu Toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('active');
+                    const icon = this.querySelector('i');
+                    icon.classList.toggle('fa-bars');
+                    icon.classList.toggle('fa-times');
+                });
+            }
+
+            // Scroll Animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            const elementsToAnimate = document.querySelectorAll('.scroll-animate');
+            elementsToAnimate.forEach(el => observer.observe(el));
+            
+            // Staggered Animations for grids
+            const staggerGrids = document.querySelectorAll('.stagger-grid');
+            staggerGrids.forEach(grid => {
+                const items = grid.querySelectorAll('.scroll-animate');
+                items.forEach((item, index) => {
+                    item.style.transitionDelay = `${index * 150}ms`;
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Loan - O$APANIKA LOANS</title>
+    <link rel="icon" href="images/IMG-20250527-WA0001.jpg" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #072a5a;
+            --secondary: #34B3E4;
+            --accent: #A9A9A9;
+            --light: #F8F9FA;
+            --dark: #212529;
+            --gray: #6C757D;
+            --light-gray: #E9ECEF;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-color: var(--light);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        .top-bar {
+            background-color: var(--primary);
+            color: white;
+            padding: 8px 0;
+            font-size: 14px;
+        }
+        
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .contact-info {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            white-space: nowrap;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: var(--secondary);
+        }
+         
+        header {
+            background-color: white;
+            box-shadow: none;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        header.scrolled {
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            width: 100%;
+        }
+        
+        .logo a {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            width: 150px;
+            height: auto;
+            max-width: 100%;
+        }
+
+        nav.desktop-menu ul {
+            display: flex;
+            list-style: none;
+            gap: clamp(15px, 2vw, 25px);
+        }
+        
+        nav.desktop-menu ul li a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s ease;
+            position: relative;
+            padding-bottom: 5px;
+        }
+        
+        nav.desktop-menu ul li a:hover, nav.desktop-menu ul li a.active {
+            color: var(--primary);
+        }
+        
+        nav.desktop-menu ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: width 0.3s ease;
+        }
+        
+        nav.desktop-menu ul li a:hover::after, nav.desktop-menu ul li a.active::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        
+        .mobile-menu {
+            display: none;
+            width: 100%;
+            background: white;
+            padding: 20px 0;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            position: absolute;
+            top: 100%;
+            left: 0;
+        }
+        
+        .mobile-menu.active {
+            display: block;
+        }
+        
+        .mobile-menu ul {
+            list-style: none;
+            text-align: center;
+        }
+        
+        .mobile-menu ul li {
+            margin-bottom: 15px;
+        }
+
+        .mobile-menu ul li:last-child {
+            margin-bottom: 0;
+        }
+        
+        .mobile-menu ul li a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            display: block;
+            padding: 10px;
+        }
+
+        .mobile-menu ul li a:hover {
+            color: var(--primary);
+            background-color: var(--light-gray);
+            border-radius: 5px;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(7, 42, 90, 0.8), rgba(7, 42, 90, 0.8)), url('images/emergency-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: clamp(80px, 12vw, 120px) 0;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: clamp(28px, 5vw, 42px);
+            margin-bottom: 15px;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            list-style: none;
+            font-size: 14px;
+        }
+        
+        .breadcrumb li {
+            margin: 0 5px;
+        }
+        
+        .breadcrumb li:after {
+            content: '/';
+            margin-left: 10px;
+            color: var(--secondary);
+        }
+        
+        .breadcrumb li:last-child:after {
+            display: none;
+        }
+        
+        .breadcrumb a {
+            color: var(--secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .breadcrumb a:hover {
+            color: white;
+        }
+        
+        /* Loan Details Section */
+        .loan-details {
+            padding: clamp(40px, 8vw, 80px) 0;
+        }
+        
+        .loan-container {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 40px;
+        }
+        
+        .loan-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        .loan-text-content {
+            grid-column: 1;
+        }
+        
+        .payday-image-container {
+            grid-column: 2;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            height: fit-content;
+            position: relative;
+        }
+        
+        .payday-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+            min-height: 350px;
+        }
+        
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(7, 42, 90, 0.8), transparent);
+            padding: 20px;
+            color: white;
+        }
+        
+        .image-overlay h4 {
+            margin-bottom: 5px;
+            font-size: 18px;
+        }
+        
+        .image-overlay p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .loan-content h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+        
+        .loan-content p {
+            margin-bottom: 20px;
+            color: var(--gray);
+        }
+        
+        .features-list {
+            margin: 30px 0;
+        }
+        
+        .features-list li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .features-list i {
+            color: var(--secondary);
+            margin-right: 10px;
+            margin-top: 4px;
+        }
+        
+        .loan-highlights {
+            background-color: var(--light);
+            border-radius: 10px;
+            padding: 30px;
+            height: fit-content;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .loan-highlights h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 22px;
+            text-align: center;
+        }
+        
+        .highlight-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .highlight-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .highlight-item h4 {
+            color: var(--primary);
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+        
+        .highlight-item p {
+            color: var(--gray);
+            font-size: 14px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary);
+            color: white;
+            border: 2px solid var(--secondary);
+            width: 100%;
+        }
+        
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--secondary);
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            background-color: var(--light);
+            padding: clamp(40px, 8vw, 80px) 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: clamp(30px, 5vw, 50px);
+        }
+        
+        .section-title h2 {
+            font-size: clamp(28px, 5vw, 36px);
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            background-color: white;
+        }
+        
+        .faq-question {
+            padding: 15px 20px;
+            background-color: var(--primary);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-answer {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-answer-content {
+            padding: 20px;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+        
+        /* Benefits Section */
+        .benefits-section {
+            padding: clamp(40px, 8vw, 80px) 0;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .benefit-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border-top: 3px solid var(--secondary);
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .benefit-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .benefit-card p {
+            color: var(--gray);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: clamp(30px, 6vw, 60px) 0 0;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+            gap: clamp(30px, 4vw, 40px);
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: clamp(18px, 3vw, 20px);
+            margin-bottom: clamp(15px, 3vw, 25px);
+            color: white;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+        
+        .footer-column p {
+            color: #ADB5BD;
+            margin-bottom: 20px;
+            font-size: clamp(14px, 2vw, 16px);
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #ADB5BD;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            font-size: clamp(14px, 2vw, 15px);
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .footer-contact {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .footer-contact li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            color: #ADB5BD;
+            font-size: clamp(14px, 2vw, 15px);
+        }
+        
+        .footer-contact i {
+            color: var(--secondary);
+            margin-top: 4px;
+            min-width: 16px;
+        }
+        
+        .copyright {
+            background-color: rgba(0,0,0,0.2);
+            padding: 20px 15px;
+            text-align: center;
+            font-size: clamp(12px, 2vw, 14px);
+            color: #ADB5BD;
+        }
+        
+        /* Responsive Breakpoints */
+        @media (max-width: 992px) {
+            nav.desktop-menu { display: none; }
+            .mobile-menu-btn { display: block; }
+
+            .loan-container {
+                grid-template-columns: 1fr;
+            }
+            .loan-content {
+                grid-template-columns: 1fr;
+            }
+            .payday-image-container {
+                grid-column: 1;
+                max-width: 500px;
+                margin: 0 auto 30px;
+            }
+            .loan-highlights {
+                order: -1;
+                max-width: 500px;
+                margin: 0 auto 40px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .top-bar-content {
+                justify-content: center;
+                gap: 15px;
+            }
+            .contact-info, .social-icons {
+                justify-content: center;
+                width: 100%;
+                margin: 5px 0;
+            }
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .footer-column h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .footer-links a:hover {
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+ 
+    
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/IMG-20250527-WA0001.jpg" alt="O$APANIKA LOANS Logo">
+                </a>
+            </div>
+            
+            <nav class="desktop-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about -us.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="loan calculator.html">Loan Calculator</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="mobile-menu" id="mobileMenu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about -us.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="loan calculator.html">Loan Calculator</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Emergency Loan for Key Clients</h1>
+            <ul class="breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                 
+                <li>Emergency Loan</li>
+            </ul>
+        </div>
+    </section>
+    
+    <!-- Loan Details Section -->
+    <section class="loan-details">
+        <div class="container loan-container">
+            <div class="loan-content">
+                <div class="loan-text-content">
+                    <h2>Quick Access to Funds in Times of Crisis</h2>
+                    <p>Our Emergency Loan is exclusively designed for our valued key clients to provide immediate financial assistance during unexpected situations. When emergencies strike, we're here to help you manage the situation with fast, flexible lending solutions that require no collateral.</p>
+                    
+                    <p>We understand that financial emergencies don't follow schedules, which is why we've streamlined our process to get you the funds you need within 1 hour of approval. Trust us to be your financial safety net when you need it most.</p>
+                    
+                    <div class="features-list">
+                        <h3>Key Features:</h3>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> <strong>Lightning-fast approval:</strong> Get funds in as little as 1 hour</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>No collateral required:</strong>&nbsp&nbsp&nbsp We trust our key clients and &nbsp&nbsprequire no security</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Simple requirements:</strong> Just your ID and proof of income</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Flexible repayment:</strong> Choose terms from 1 to 6 months</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Dedicated support:</strong> Priority service for our key clients</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="payday-image-container">
+                    <img src="images/953974fd897c81bf481ddebbbccaa831.jpg" alt="A person receiving quick financial help for an emergency">
+                    <div class="image-overlay">
+                        <h4>Immediate Financial Support</h4>
+                        <p>Funds available in as little as 1 hour</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="loan-highlights">
+                <h3>Loan Summary</h3>
+                <div class="highlight-item">
+                    <h4>Loan Amount</h4>
+                    <p>10,000 MWK - 500,000 MWK</p>
+                </div>
+                <div class="highlight-item">
+                    <h4>Loan Period</h4>
+                    <p>1 to 6 months</p>
+                </div>
+                <div class="highlight-item">
+                    <h4>Processing Time</h4>
+                    <p>1 hour</p>
+                </div>
+                <div class="highlight-item">
+                    <h4>Requirements</h4>
+                    <p>National ID and proof of income</p>
+                </div>
+                <div class="highlight-item">
+                    <h4>Eligibility</h4>
+                    <p>Key clients with a stable income</p>
+                </div>
+                <a href="https://forms.gle/f9ByDTM4SVmyzQS46" class="btn btn-primary">Apply Now</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Find answers to common questions about our Emergency Loan</p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What is an Emergency Loan?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>An Emergency Loan is a specialized loan product designed to provide quick access to funds in times of crisis. It's exclusively available to our key clients who need immediate financial assistance for unexpected expenses.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Who qualifies as a "key client"?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Key clients are customers with a proven, positive borrowing history with O$APANIKA LOANS. Eligibility is determined based on your relationship and repayment record with us.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What documents are required?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>You'll need a valid government-issued ID (National ID, Passport, or Driver's License) and documentation proving your stable income (recent pay slips, bank statements, or business records).</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Is collateral required?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>No, our Emergency Loan for key clients requires no collateral. We value our relationship with you and trust in your ability to repay based on your income and history with us.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Our Emergency Loan?</h2>
+                <p>We're committed to providing immediate financial solutions for our most valued clients</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3>Incredibly Fast</h3>
+                    <p>When emergencies happen, time is of the essence. We prioritize your application to get you the funds you need in as little as one hour.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>Flexible & Fair</h3>
+                    <p>Repayment terms can be tailored to fit your financial situation. We offer solutions that help you recover without adding unnecessary stress.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>Built on Trust</h3>
+                    <p>We require no collateral for this loan. Your established relationship and positive history with us is all the security we need.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-column">
+                <h3>About Us</h3>
+                <p>Osapanika Loan Bag is a leading microfinance institution in Malawi, providing accessible and affordable financial solutions.</p>
+                 
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about -us.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="loan calculator.html">Loan Calculator</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="payday-loan.html">Pay Day Loan</a></li>
+                    <li><a href="mlimi-loan.html">Mlimi Loan</a></li>
+                    <li><a href="iphushe-loan.html">Business Iphushidwe Loan</a></li>
+                    <li><a href="civil-servant-loan.html">Civil Servant Loan</a></li>
+                    <li><a href="group-loan.html">Group Loan</a></li>
+                    <li><a href="emergency-loan.html">Emergency Loan</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul class="footer-contact">
+ <li><i class="fas fa-map-marker-alt"></i><span>Area 49, Tower Street, Lilongwe, Malawi</span></li>
+                    <li><i class="fas fa-phone"></i><span>+265 998 164 336<br>+265 881 426 054<br>+265 888 131 178
+                    <br>+265 897 537 221</span></li>
+                    <li><i class="fas fa-envelope"></i><span>osapanikaloans@gmail.com</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© <span id="current-year"></span> Osapanika Loan Bag. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Automatic Copyright Year
+            const yearSpan = document.getElementById('current-year');
+            if (yearSpan) {
+                yearSpan.textContent = new Date().getFullYear();
+            }
+
+            // Header scroll effect
+            const header = document.querySelector('header');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // Mobile Menu Toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            if(mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('active');
+                    const icon = this.querySelector('i');
+                    icon.classList.toggle('fa-bars');
+                    icon.classList.toggle('fa-times');
+                });
+            }
+            
+            // FAQ Accordion
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const faqItem = question.parentElement;
+                    const icon = question.querySelector('i');
+                    const wasActive = faqItem.classList.contains('active');
+
+                    // Close all other items
+                    document.querySelectorAll('.faq-item.active').forEach(activeItem => {
+                        if (activeItem !== faqItem) {
+                            activeItem.classList.remove('active');
+                            activeItem.querySelector('.faq-question i').className = 'fas fa-chevron-down';
+                        }
+                    });
+
+                    // Toggle the clicked item
+                    if (!wasActive) {
+                        faqItem.classList.add('active');
+                        icon.className = 'fas fa-chevron-up';
+                    } else {
+                        faqItem.classList.remove('active');
+                        icon.className = 'fas fa-chevron-down';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
